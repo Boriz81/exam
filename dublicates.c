@@ -27,9 +27,9 @@ int* dynamic_array_until_eof(int *size) {
         
         // Проверяем следующий символ после числа
         int next_char = getchar();
-        if (next_char == '\n' && next_char == EOF) {
+        if (next_char == '\n' || next_char == EOF) {
             break; // Выходим из цикла при Enter или EOF
-        }
+        } 
         // ungetc(next_char, stdin); // Возвращаем символ обратно в поток
     }
 
