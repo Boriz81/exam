@@ -3,10 +3,12 @@
 
 int main() {
     double R, result;
-    if (scanf("%lf", &R) == 1 && getchar() == '\n') {
-        result = round(R * 180/M_PI);
+    if (scanf("%le", &R) != 1 && getchar() != '\n') {
+    	printf("n/a");
+    }
+    else {
+        result = round(R * 180 / M_PI);
         printf("%.lf", result);
-    } else
-        printf("n/a");
+    }
     return 0;
 }

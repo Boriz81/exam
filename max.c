@@ -1,39 +1,30 @@
 #include <stdio.h>
 
-void max(int x, int y) {
-    if (x < y) {
-        printf("the second number entered is greater\n");
-    } else {
-        printf("the first number entered is greater\n");
-    }
-}
-
 int main() {
-    float a, b;
-    printf("please enter first number\n");
-    if (scanf("%f", &a) != 1) {
-        printf("error");
-        return 0;
-    };
-    if (a == (int)a) {
-        printf("ok\n");
-    } else {
-        printf("error, your number is not integer\n");
-        return 0;
+    int x, max;
+    int first_number = 1;  // Флаг: 1 = число ещё не введено, 0 = введено
+    
+    while (scanf("%d", &x) == 1) {  // Читаем числа, пока успешно
+        if (x == -1) {
+            break;
+        }
+        
+        // Если это первое число, инициализируем max
+        if (first_number) {
+            max = x;
+            first_number = 0;
+        } 
+        // Иначе сравниваем с текущим максимумом
+        else if (x > max) {
+            max = x;
+        }
     }
-    printf("please enter second number\n");
-    if (scanf("%f", &b) != 1) {
-        printf("error");
-        return 0;
-    };
-    if (b == (int)b) {
-        printf("ok\n");
-    } else {
-        printf("error, your number is not integer\n");
-        return 0;
+    
+    // Если чисел не было (или только -1), завершаем с ошибкой
+    if (first_number) {
+        return 1;
     }
-
-    max(a, b);
-
+    
+    printf("%d", max);
     return 0;
 }
