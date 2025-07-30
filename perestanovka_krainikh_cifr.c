@@ -1,14 +1,27 @@
 #include <stdio.h>
 
 int main() {
-    int num;
-    scanf("%d", &num);
+    int n;
+    scanf("%d", &n);
 
-    if (num < 0) {
-	num = -num;
-	printf("-%d %d %d", num % 10, (num / 10) % 10, num / 100);
+    int sign = 1;
+    if (n < 0) {
+        sign = -1;
+	n = -n;
+    }
+
+    int first_digit = n / 100;
+    int middle_digit = (n / 10) % 10;
+    int last_digit = n % 10;
+
+    int result = last_digit * 100 + middle_digit * 10 + first_digit;
+
+    if (sign == -1) {
+	printf("-%03d", result);
+	return 0;
     } else {
-	printf("%d %d %d", num % 10, (num / 10) % 10, num / 100);
+	printf("%03d", result);
+	return 0;
     }
     return 0;
 }
